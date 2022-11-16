@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import React from 'react';
+import { Navigation } from './Components/Navigation/Navigation';
 
 const AddPage = React.lazy(() => import ('./views/AddPage/AddPage'));
 const HomePage = React.lazy(() => import ('./views/HomePage/HomePage'));
@@ -12,7 +13,8 @@ const RegisterPage = React.lazy(() => import ('./views/RegisterPage/RegisterPage
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
+      <Navigation />
 
       <Routes>
 
