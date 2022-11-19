@@ -1,7 +1,10 @@
 
 
 const HomePage = () => {
-    return <h1>home page</h1>
+
+    return (
+        <h2>Welcome! Let's create your skills page. Go to Add page and start your yourney.</h2>
+    )
 }
 
 export default HomePage;

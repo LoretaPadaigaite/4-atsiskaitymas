@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Logo } from "../Logo/Logo";
 import './Navigation.css';
 
@@ -14,6 +14,8 @@ export const Navigation = () => {
           <Link className="link" to='/register' >Register</Link>
           <Link className="link" to='/' >Home</Link>
           <Link className="link" to='/add' >Add</Link>
+
+          <Outlet/>
   
         </div>
     )

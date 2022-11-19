@@ -18,29 +18,33 @@ function App() {
 
       <Routes>
 
-      <Route path='/register' element={
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <RegisterPage/>
-          </React.Suspense>
-        }/>
+        <Route path='/'>
 
-        <Route path='/login' element={
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <LoginPage/>
-          </React.Suspense>
-        }/>
+          <Route path='/register' element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <RegisterPage/>
+            </React.Suspense>
+          }/>
 
-        <Route path='/' element={
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <HomePage/>
-          </React.Suspense>
-          } />
+          <Route path='/login' element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <LoginPage/>
+            </React.Suspense>
+          }/>
 
-        <Route path='/add' element={
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <AddPage/>
-          </React.Suspense>
-        }/>
+          <Route path='/' element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <HomePage/>
+            </React.Suspense>
+            } />
+
+          <Route path='/add' element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <AddPage/>
+            </React.Suspense>
+          }/>
+
+        </Route>
 
       </Routes>
     </div>
