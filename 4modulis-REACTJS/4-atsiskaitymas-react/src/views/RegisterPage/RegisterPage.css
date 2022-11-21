@@ -1,3 +1,9 @@
 h3 {
     color: red;
 }
+.registerform, .addPageForm {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+}

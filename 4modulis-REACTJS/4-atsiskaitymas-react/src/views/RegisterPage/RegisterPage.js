@@ -1,62 +1,83 @@
 import { useState } from "react";
 import { BASE_URL } from "../../Components/Constants/Constants";
-import { LoginForm } from "../../Components/LoginForm/LoginForm";
 import { useNavigate } from "react-router-dom";
 import './RegisterPage.css'
-
-
+import { OuterNavigation } from "../../Components/Navigation/OuterNavigation";
 
 
 const RegisterPage = () => {
 
-
-  const [error, setError] = useState ('');
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [submitted, setSubmitted] =useState(false)
+  const [error, setError] = useState (false);
   const navigate = useNavigate();
 
-  const handelLogin = (e) => {
+
+  const handleEmail = (e) => {
+      setEmail(e.target.value);
+      setSubmitted(false)
+  }
+
+  const handlePassword = (e) => {
+      setPassword(e.target.value);
+      setSubmitted(false)
+  }
+
+
+  const handleRegister = (e) => {
       e.preventDefault();
+      
       fetch(`${BASE_URL}/auth/register`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              email: 'bandymas@gmail.com',
-              password: 'bandymas'
+            email:'',
+            password:''
           })
       })
       .then(res => res.json())
-      .then(data => {
-console.log(data);
+      .then( data => {
           if (data.err) {
             setError(data.err);
           } else {
+            setEmail('');
+            setPassword('');
+            setSubmitted(true)
             navigate('/login')
           }
-      })
-console.log('pavyko login')
-  
+      })  
   }
-  
-  
+    
     return (
         <>
    
+          <OuterNavigation/>
+
           <h2>Welcome, please login or register.</h2>
 
-          {error && <h3>{error} !</h3>}
+          {error && <h3> {error} ! </h3>}
 
-          <form onSubmit={handelLogin}>
+          <form className="registerform">
 
-          <LoginForm/>
-
+            <input 
+              onChange={handleEmail} 
+              value={email} 
+              type='email' 
+              placeholder="Email" />
+            <input 
+              onChange={handlePassword} 
+              value={password} 
+              type='password' 
+              placeholder='Password'/>
+            <button 
+              onClick={handleRegister} 
+              type='submit'>
+                Register</button>
+  
           </form>
-
-       
-
-
-
 
         </>
 
